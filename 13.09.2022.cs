@@ -1,29 +1,35 @@
-﻿//  Задача 34: Задайте массив заполненный случайными положительными трёхзначными числами. Напишите программу, которая покажет количество чётных чисел в массиве.
+﻿// Задача 38: Задайте массив вещественных чисел. Найдите разницу между максимальным и минимальным элементов массива.
 
-// [345, 897, 568, 234] -> 2
+// [3 7 22 2 78] -> 76
+
 Console.Clear();
-int[] GetArray(int size, int minValue, int maxValue)
+double[] GetArray(int size)
 {
-    int[] res = new int[size];
+    double[] res = new double[size];
     Console.Write("[ ");
     for (int i = 0; i < size; i++)
     {
-        res[i] = new Random().Next(minValue, maxValue + 1);
-        if (i == size-1) Console.Write($"{res[i]}");
-        else Console.Write($"{res[i]} , ");
-    } 
+        res[i] = new Random().NextDouble() * (1000 - 100);
+        if (i == size - 1) Console.Write($"{Math.Round(res[i], 2)}");
+        else Console.Write($"{Math.Round(res[i], 2)} , ");
+    }
     Console.Write("]");
     return res;
 }
-int count = 0;
-int CountEvenNumbers(int[] arra)
+Console.WriteLine("                 ");
+double DifferenceNumbersInArray(double[] arra)
 {
-    foreach(int i in arra){
-        if (i % 2 == 0) count ++;
-        else count += 0;
+    double min = arra[0];
+    double max = 0;
+    double result = 0;
+    for (int g = 0; g < arra.Length; g++)
+    {
+        if (min > arra[g]) min = arra[g];
+        else max = arra[g];
     }
-    Console.Write($" -> {count}");
-    return count;
+    result = (Math.Round(max, 2)) - (Math.Round(min, 2));
+    Console.Write($" -> {Math.Round(result, 2)} ");
+    return result;
 }
-int[] array = GetArray(6, 100 , 1000);
-CountEvenNumbers(array);
+double[] array = GetArray(4);
+DifferenceNumbersInArray(array);
