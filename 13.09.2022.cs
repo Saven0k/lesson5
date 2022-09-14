@@ -1,6 +1,8 @@
-﻿// Задача 33: Задайте массив. Напишите программу, которая определяет, присутствует ли заданное число в массиве.
-// 4; массив [6, 7, 19, 345, 3] -> нет
-// -3; массив [6, 7, 19, 345, 3] -> да
+﻿// Задача 35: Задайте одномерный массив из 123 случайных чисел. Найдите количество элементов массива, значения которых лежат в отрезке [10,99].
+// Пример для массива из 5, а не 123 элементов. В своём решении сделайте для 123
+// [5, 18, 123, 6, 2] -> 1
+// [1, 2, 3, 6, 2] -> 0
+// [10, 11, 12, 13, 14] -> 5
 
 Console.Clear();
 int[] GetArray(int size, int minValue, int maxValue)
@@ -16,27 +18,19 @@ int[] GetArray(int size, int minValue, int maxValue)
     Console.Write("]");
     return res;
 }
-int mbhaving = 0;
 int count = 0;
-void Find_value(int[] arra , int value)
+int result = 0;
+void Find_value(int[] arra )
 {
     foreach (int i in arra)
     {
-        if (i==value) 
+        if (i>10 && i<100) 
         {
             count++;
-            mbhaving += 1;
         } 
-        else {}
+        else result += 0;
     }
-        if (mbhaving > 0) 
-        { 
-        Console.Write($" {value}  -> да , {count} раз");
-        
-        }     
-        else Console.Write($" {value} -> нет");
+    Console.Write($"-> {count}");
 }
-Console.WriteLine("Введите число:");
-int nnvalue = int.Parse(Console.ReadLine());
-int[] array = GetArray(10 , -2, 3);
-Find_value(array , nnvalue);
+int [] array = GetArray(123 , 1 , 123);
+Find_value(array);
