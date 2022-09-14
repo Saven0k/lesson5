@@ -1,6 +1,9 @@
-﻿//  Задача 34: Задайте массив заполненный случайными положительными трёхзначными числами. Напишите программу, которая покажет количество чётных чисел в массиве.
+﻿// Задача 36: Задайте одномерный массив, заполненный случайными числами. Найдите сумму элементов, стоящих на нечётных позициях.
 
-// [345, 897, 568, 234] -> 2
+// [3, 7, 23, 12] -> 19
+
+// [-4, -6, 89, 6] -> 0
+
 Console.Clear();
 int[] GetArray(int size, int minValue, int maxValue)
 {
@@ -9,21 +12,29 @@ int[] GetArray(int size, int minValue, int maxValue)
     for (int i = 0; i < size; i++)
     {
         res[i] = new Random().Next(minValue, maxValue + 1);
-        if (i == size-1) Console.Write($"{res[i]}");
+        if (i == size - 1) Console.Write($"{res[i]}");
         else Console.Write($"{res[i]} , ");
-    } 
+    }
     Console.Write("]");
     return res;
 }
-int count = 0;
-int CountEvenNumbers(int[] arra)
+int result = 0;
+int OddNumbers(int[] arra)
 {
-    foreach(int i in arra){
-        if (i % 2 == 0) count ++;
-        else count += 0;
+    for (int i = 0; i < arra.Length; i++)
+    {
+        if (i % 2 != 0)
+        {
+            result += arra[i];
+        }
     }
-    Console.Write($" -> {count}");
-    return count;
+    Console.Write($" ->  {result}");
+    return result;
 }
-int[] array = GetArray(6, 100 , 1000);
-CountEvenNumbers(array);
+
+
+Console.Write("Введите число: ");
+int a = int.Parse(Console.ReadLine());
+
+int[] array = GetArray(a, -10, 10);
+OddNumbers(array);
