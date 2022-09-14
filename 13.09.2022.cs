@@ -31,12 +31,19 @@ void Find_value(int[] arra , int value)
     }
         if (mbhaving > 0) 
         { 
-        Console.Write($" {value}  -> да , {count} раз");
+            if (count == 2 || count == 3 || count == 4)
+            {
+                Console.Write($" < - {value}  -> да , {count} раза");
+            }
+            else
+            {
+                Console.Write($" < - {value}  -> да , {count} раз");
+            }
         
         }     
         else Console.Write($" {value} -> нет");
 }
-Console.WriteLine("Введите число:");
+Console.Write("Введите число: ");
 int nnvalue = int.Parse(Console.ReadLine());
 int[] array = GetArray(10 , -2, 3);
 Find_value(array , nnvalue);
