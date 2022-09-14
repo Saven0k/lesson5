@@ -1,31 +1,32 @@
-﻿// Задача 31: Задайте массив из 12 элементов, заполненный случайными числами из промежутка [-9, 9]. Найдите сумму отрицательных и положительных элементов массива.
-// Например, в массиве [3,9,-8,1,0,-7,2,-1,8,-3,-1,6] сумма положительных чисел равна 29, сумма отрицательных равна -20.
+﻿// Задача 32: Напишите программу замена элементов массива: положительные элементы замените на соответствующие отрицательные, и наоборот.
+// [-4, -8, 8, 2] -> [4, 8, -8, -2]
 Console.Clear();
-int [] result_random = new int [12];
-int[] Make_random_array(int minvalue , int maxvalue)
+int[] GetArray(int size, int minValue, int maxValue)
 {
+    int[] res = new int[size];
     Console.Write("[");
-    for(int i = 0; i<12;i++)
+    for (int i = 0; i < size; i++)
     {
-        result_random[i] = new Random().Next(minvalue , maxvalue+1);
-        Console.Write(result_random[i] + ",");
-    }
-    Console.Write($"]");
-    return result_random;
+        res[i] = new Random().Next(minValue, maxValue + 1);
+        if (i == size-1) Console.Write($"{res[i]}");
+        else Console.Write($"{res[i]} , ");
+    } 
+    Console.Write("]");
+    return res;
 }
-Make_random_array(-9,10);
-int positive_result = 0;
-int negative_result = 0;
-foreach(int g in result_random)
+
+int[] array = GetArray(5, -9, 9);
+Console.WriteLine("   ");
+for (int i = 0; i < array.Length;i++) array[i] *= -1;
+Console.Write('[');
+// foreach(int el in array)
+// {
+//     if (array[el] == array[-1]) Console.Write($"{el}");
+// else Console.Write($"{el} ,");
+// }
+for(int g= 0;g<array.Length;g++)
 {
-    if (g>0) positive_result+=g;
-    else if(g<0) negative_result+=g;
-    else{}
-
+    if (g == array.Length-1) Console.Write($"{array[g]}");
+    else Console.Write($"{array[g]} , ");
 }
-
-Console.Write($" -> Сумма положительных чисел = {positive_result}; Сумма отрицательных чисел = {negative_result}");
-
-
-
-
+Console.WriteLine(']');
