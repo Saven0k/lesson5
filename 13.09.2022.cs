@@ -1,10 +1,12 @@
-﻿// Задача 32: Напишите программу замена элементов массива: положительные элементы замените на соответствующие отрицательные, и наоборот.
-// [-4, -8, 8, 2] -> [4, 8, -8, -2]
+﻿// Задача 33: Задайте массив. Напишите программу, которая определяет, присутствует ли заданное число в массиве.
+// 4; массив [6, 7, 19, 345, 3] -> нет
+// -3; массив [6, 7, 19, 345, 3] -> да
+
 Console.Clear();
 int[] GetArray(int size, int minValue, int maxValue)
 {
     int[] res = new int[size];
-    Console.Write("[");
+    Console.Write("[ ");
     for (int i = 0; i < size; i++)
     {
         res[i] = new Random().Next(minValue, maxValue + 1);
@@ -14,19 +16,27 @@ int[] GetArray(int size, int minValue, int maxValue)
     Console.Write("]");
     return res;
 }
-
-int[] array = GetArray(5, -9, 9);
-Console.WriteLine("   ");
-for (int i = 0; i < array.Length;i++) array[i] *= -1;
-Console.Write('[');
-// foreach(int el in array)
-// {
-//     if (array[el] == array[-1]) Console.Write($"{el}");
-// else Console.Write($"{el} ,");
-// }
-for(int g= 0;g<array.Length;g++)
+int mbhaving = 0;
+int count = 0;
+void Find_value(int[] arra , int value)
 {
-    if (g == array.Length-1) Console.Write($"{array[g]}");
-    else Console.Write($"{array[g]} , ");
+    foreach (int i in arra)
+    {
+        if (i==value) 
+        {
+            count++;
+            mbhaving += 1;
+        } 
+        else {}
+    }
+        if (mbhaving > 0) 
+        { 
+        Console.Write($" {value}  -> да , {count} раз");
+        
+        }     
+        else Console.Write($" {value} -> нет");
 }
-Console.WriteLine(']');
+Console.WriteLine("Введите число:");
+int nnvalue = int.Parse(Console.ReadLine());
+int[] array = GetArray(10 , -2, 3);
+Find_value(array , nnvalue);
